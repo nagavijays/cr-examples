@@ -31,17 +31,21 @@ $(document).ready(function () {
 
     var thingId;
     var apiToken;
+    var authorization;
 
     // --- Get ThingID from input
     var getThingId = function () {
         thingId = document.getElementById('thingId').value;
         apiToken = document.getElementById('apiToken').value;
+        authorization = document.getElementById('authorization').value;
         $('#failure').hide();
 
         // Set solution api token request header
         $.ajaxSetup({
             headers: {
-                'x-cr-api-token': apiToken
+                'x-cr-api-token': apiToken,
+                'Authorization' : authorization,
+                'Content-Type' : 'application/json' 
             }
         });
 
